@@ -1,0 +1,62 @@
+<div *ngIf="userList.length">
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th >
+                   Username
+                </th>
+                <th >
+                   Firstname
+                </th>
+                <th >
+                    Lastname
+                </th>
+                <th >
+                    Email
+                </th>
+                <th >
+                    Address
+                </th>
+                <th >
+                    Phone
+                </th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let user of userList">
+                <td>
+                    {{ user.username }}
+                </td>
+                <td>
+                    {{ user.name }}
+                </td>
+                <td>
+                    {{ user.surname }}
+                </td>
+                <td>
+                    {{ user.email }}
+                </td>
+                <td>
+                    {{ user.address.area }} <br>
+                    {{ user.address.road }} 
+                </td>
+                <td>
+                    <div *ngFor="let phone of user.phone">
+                        <strong> {{ phone.type }} </strong> <br>
+                        {{ phone.number }}
+                    </div>
+                </td>
+                <td>
+                    <button (click)="onDeleteButtonClick(user.username, user)" class="btn btn-danger btn-sm">DELETE</button>
+                </td>   
+                <td class="">
+                    <div *ngIf="user.loading" class="row spinner">
+                        <div class="spinner-border spinner-border-xs text-primary" role="status">
+                            <span class="sr-only"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,52 @@
+<div *ngIf="productList.length">
+    <table class="table table-striped" >
+        <thead>
+            <tr>
+                <th >
+                   Product
+                </th>
+                <th >
+                   Cost
+                </th>
+                <th >
+                    Quantity
+                </th>
+                <th >
+                    Description
+                </th>
+                <th >
+                    ID
+                </th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor="let product of productList">
+                <td class="w-25">
+                    {{ product.product }}
+                </td>
+                <td class="w-25">
+                    {{ product.cost }}
+                </td>
+                <td >
+                    {{ product.quantity }}
+                </td>
+                <td class="w-50">
+                    {{ product.description }}
+                </td>
+                <td>
+                    {{ product._id }}
+                </td>
+                <td>
+                    <button (click)="onDeleteButtonClick(product._id, product)" class="btn btn-danger btn-sm">DELETE</button>
+                </td>   
+                <td class="w-25">
+                    <div *ngIf="product.loading" class="row spinner">
+                        <div class="spinner-border spinner-border-xs text-primary" role="status">
+                            <span class="sr-only"></span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

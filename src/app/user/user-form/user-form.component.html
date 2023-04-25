@@ -1,0 +1,89 @@
+<h2>You are modifying the user with username: <span>{{user.username}}</span></h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        formControlName="username"
+        readonly
+      />
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name" />
+    </div>
+    <div class="mb-3">
+      <label for="surname" class="form-label">Surname</label>
+      <input
+        type="text"
+        class="form-control"
+        id="surname"
+        formControlName="surname"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
+    </div>
+    <div formGroupName="address">
+      <h4>Address</h4>
+      <div class="mb-3">
+        <label for="area" class="form-label">Area</label>
+        <input
+          type="text"
+          class="form-control"
+          id="area"
+          formControlName="area"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="road" class="form-label">Road</label>
+        <input
+          type="text"
+          class="form-control"
+          id="road"
+          formControlName="road"
+        />
+      </div>
+    </div>
+  
+    <h4>Phone</h4>
+    <div formArrayName="phone">
+      <div *ngFor="let phone of phoneControls; let i = index" [formGroupName]="i">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="mb-3">
+              <label for="type" class="form-label">Type</label>
+              <input
+                type="text"
+                class="form-control"
+                id="type"
+                formControlName="type"
+              />
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="mb-3">
+              <label for="number" class="form-label">Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="number"
+                formControlName="number"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!form.valid">
+      Submit
+    </button>
+  </form>
